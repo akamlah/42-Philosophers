@@ -48,3 +48,12 @@ int	ph_prec_msleep(long tv_tosleep_msec, int interval)
 	}
 	return 0;
 }
+
+void	ph_death_log(t_ph_vars *phx, t_ph_philo *philo)
+{
+	pthread_mutex_lock(&phx->someone_died_mutex);
+	phx->someone_died = 1;
+	pthread_mutex_unlock(&phx->someone_died_mutex);
+	philo->exitcode = 1;
+	ph_print_log(phx, philo, 4);
+}

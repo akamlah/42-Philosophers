@@ -1,7 +1,7 @@
 #include "../header/philosophers.h"
 
 /*
-	Initializes variables in main struct. 
+	Initializes variables in main struct.
 	Returns -1 on error.
 	The check interval fo rthe timer is calibrated according to the number of philosophers.
 */
@@ -77,11 +77,7 @@ static void	*ph_death(void *arg)
 			philo->tsmp_msec = 	(tvx.tv_usec / 1000) + (tvx.tv_sec * 1000) - phx->time_start_msec;
 			if (philo->tsmp_msec - philo->tsmp_lastmeal_msec >= phx->time_to_die)
 			{
-				pthread_mutex_lock(&phx->someone_died_mutex);
-				phx->someone_died = 1;
-				pthread_mutex_unlock(&phx->someone_died_mutex);
-				philo->exitcode = 1;
-				ph_print_log(phx, philo, 4);
+				ph_death_log(phx, philo);
 				return (NULL);
 			}
 			sum += philo->ate_enough;

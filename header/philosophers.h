@@ -55,6 +55,7 @@ int			ph_init_forks(t_ph_vars *phx);
 int			ph_philo(t_ph_vars *phx, int id);
 int			ph_prec_msleep(long tv_tosleep_msec, int interval);
 void		ph_print_log(t_ph_vars *phx, t_ph_philo *philo, int msgnr);
+void		ph_death_log(t_ph_vars *phx, t_ph_philo *philo);
 
 /* ************************************************************************** */
 
