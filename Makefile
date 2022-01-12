@@ -21,13 +21,12 @@ NAME=philo
 SRC_DIR=./src/
 OBJ_DIR=./obj/
 
-SRC_LIST= ph_main.c \
+SRC_LIST= \
+ph_main.c \
 ph_parse.c \
-ph_sim_main.c \
-ph_routine_philos.c \
-ph_new_philo.c \
-ph_utils_time.c \
-ph_utils_free.c \
+ph_simulation.c \
+ph_philo.c \
+ph_log_and_time.c \
 ft_atoi.c \
 ft_strlen.c \
 
