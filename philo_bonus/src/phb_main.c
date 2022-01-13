@@ -6,7 +6,7 @@
 /*   By: alicekamlah <alicekamlah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 21:52:21 by akamlah           #+#    #+#             */
-/*   Updated: 2022/01/13 19:44:39 by alicekamlah      ###   ########.fr       */
+/*   Updated: 2022/01/13 19:53:33 by alicekamlah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	Frees up to n philosophers. If n = -2, it is assumed all possible
 	Philosophers were created, thus n is set to number_of_philosophers.
 */
-static void	ph_free_philos(t_ph_vars *phbx, int n)
+/* static void	ph_free_philos(t_ph_vars *phbx, int n)
 {
 	t_ph_philo	*curr;
 	t_ph_philo	*tmp;
@@ -56,7 +56,7 @@ static void	ph_free_philos(t_ph_vars *phbx, int n)
 		free(tmp);
 		i++;
 	}
-}
+} */
 
 /*
 	Checks if one of the above can be called and destroys all mutexes

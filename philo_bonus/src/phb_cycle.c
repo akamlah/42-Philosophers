@@ -29,7 +29,6 @@ int	ph_prec_msleep(long tv_tosleep_msec, int interval)
 	return (0);
 }
 
-
 void	*phb_death(void *arg)
 {
 	t_ph_philo		*philo;
@@ -55,8 +54,6 @@ void	*phb_death(void *arg)
 	}
 }
 
-
-
 /*
 	Finctionality for printing the log messages to stdout with a good enough
 	timestamp. If someone died or the philo has eaten enough it stops printing.
@@ -79,13 +76,11 @@ void	phb_print_log(t_ph_vars *phbx, t_ph_philo *philo, int msgnr)
 	{
 		printf("%ld %d %s\n", philo->tsmp_msec, philo->id, msg[msgnr]);
 		sem_post(philo->sem_print);
-		// does it mean all other philos are waiting then?
 	}
 	if (msgnr == 4 && !philo->ate_enough)
 		printf("%ld %d %s\n", ((tvx.tv_usec / 1000) + (tvx.tv_sec * 1000))
 			- phbx->time_start_msec, philo->id, msg[msgnr]);
 }
-
 
 /*
 
