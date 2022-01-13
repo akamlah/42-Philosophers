@@ -1,19 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ph_main.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alicekamlah <alicekamlah@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/12 21:52:21 by akamlah           #+#    #+#             */
+/*   Updated: 2022/01/13 00:43:08 by alicekamlah      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../header/philosophers.h"
 
 /* ************************************************************************** */
-// MAIN
+//	MAIN
 /* ************************************************************************** */
 
-// todo: 
-// do i have to check if time ags given are > 0? what happens if = 0?
-// edge case 0 or 1 philo covered?
-// destroyed and freed all mutexes?
-// how avoid philos printng stuff at same timestamp? -> now i will try to cut to ms only at the moment of printnig to propagate less errors in the conversions
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_ph_vars	phx;
-	int err;
+	int			err;
 
 	if (ph_parse(&phx, argc, argv) != 0)
 		return (1);
@@ -35,21 +41,18 @@ int main(int argc, char **argv)
 	return (0);
 }
 
-
 /* ************************************************************************** */
-
-//	Free functionalities
-
+//	Free heap at program end
 /* ************************************************************************** */
 
 /*
 	frees up to n forks. If a -2 is passed, it means all possible 
 	forks were allocated and thus n is set to max possible, i.e.
 	number_of_philosophers.
- */
+*/
 static void	ph_free_forks(t_ph_vars *phx, int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == -2)
@@ -63,10 +66,10 @@ static void	ph_free_forks(t_ph_vars *phx, int n)
 		free(phx->forks);
 }
 
-/* 
+/*
 	Frees up to n philosophers. If n = -2, it is assumed all possible
 	Philosophers were created, thus n is set to number_of_philosophers.
- */
+*/
 static void	ph_free_philos(t_ph_vars *phx, int n)
 {
 	t_ph_philo	*curr;
@@ -86,15 +89,14 @@ static void	ph_free_philos(t_ph_vars *phx, int n)
 	}
 }
 
-/* 
+/*
 	Checks if one of the above can be called and destroys all mutexes
- */
+*/
 void	ph_free(t_ph_vars *phx, int forks, int philos)
 {
 	if (forks)
 		ph_free_forks(phx, forks);
 	if (philos)
 		ph_free_philos(phx, philos);
-	pthread_mutex_destroy(&phx->someone_died_mutex);
 	pthread_mutex_destroy(&phx->print_mutex);
 }

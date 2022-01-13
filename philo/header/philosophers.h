@@ -1,7 +1,17 @@
 /* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alicekamlah <alicekamlah@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/12 21:37:31 by akamlah           #+#    #+#             */
+/*   Updated: 2022/01/13 00:42:58 by alicekamlah      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef _PHILO_H_
-# define _PHILO_H_
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -11,7 +21,8 @@
 # include <sys/time.h>
 
 /* ************************************************************************** */
-typedef struct			s_ph_philo
+
+typedef struct s_ph_philo
 {
 	int					id;
 	int					times_eaten;
@@ -25,7 +36,8 @@ typedef struct			s_ph_philo
 	struct s_ph_philo	*prev;
 	pthread_t			philo_thread;
 }						t_ph_philo;
-typedef struct		s_ph_vars
+
+typedef struct s_ph_vars
 {
 	int				number_of_philosophers;
 	int				time_to_die;
@@ -37,7 +49,6 @@ typedef struct		s_ph_vars
 	int				prec_sleep_interval;
 	long			time_start_msec;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	someone_died_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_t		death;
 	t_ph_philo		*nth_philo;
@@ -47,7 +58,7 @@ typedef struct		s_ph_vars
 
 int			ph_parse(t_ph_vars *phx, int argc, char **argv);
 int			ft_atoi(const char *str);
-size_t		ft_strlen (const char *s);
+size_t		ft_strlen(const char *s);
 void		ph_free(t_ph_vars *phx, int forks, int philos);
 int			ph_simulation(t_ph_vars *phx);
 int			ph_init(t_ph_vars *phx);
@@ -55,7 +66,7 @@ int			ph_init_forks(t_ph_vars *phx);
 int			ph_philo(t_ph_vars *phx, int id);
 int			ph_prec_msleep(long tv_tosleep_msec, int interval);
 void		ph_print_log(t_ph_vars *phx, t_ph_philo *philo, int msgnr);
-void		ph_death_log(t_ph_vars *phx, t_ph_philo *philo);
+void		*ph_kill_philo(t_ph_vars *phx, t_ph_philo *philo);
 
 /* ************************************************************************** */
 
