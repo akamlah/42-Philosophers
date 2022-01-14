@@ -6,7 +6,7 @@
 #    By: alicekamlah <alicekamlah@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/12 21:52:44 by akamlah           #+#    #+#              #
-#    Updated: 2022/01/13 19:42:44 by alicekamlah      ###   ########.fr        #
+#    Updated: 2022/01/14 13:35:30 by alicekamlah      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,9 @@ OBJ_DIR=./obj/
 SRC_LIST= \
 phb_main.c \
 ph_parse.c \
-phb_cycle.c \
 phb_init.c \
+phb_simulation.c \
+phb_cycle.c \
 ft_atoi.c \
 ft_strlen.c \
 

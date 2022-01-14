@@ -6,7 +6,7 @@
 /*   By: alicekamlah <alicekamlah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 21:52:33 by akamlah           #+#    #+#             */
-/*   Updated: 2022/01/13 00:42:34 by alicekamlah      ###   ########.fr       */
+/*   Updated: 2022/01/14 12:35:54 by alicekamlah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ static void	*ph_philos_life(void *arg)
 	Allocates memory for a new philosopher and sets initial values,
 	insert the node in the linked list and links the addresses of the forks
 	and other data to the pointers allocated accordingly.
+	Returns null on failure, or the address of the new element on success.
 */
 static t_ph_philo	*ph_new_philo(t_ph_vars *phx, int id)
 {

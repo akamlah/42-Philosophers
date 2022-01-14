@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alicekamlah <alicekamlah@student.42.fr>    +#+  +:+       +#+        */
+/*   By: akamlah <akamlah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 21:37:31 by akamlah           #+#    #+#             */
-/*   Updated: 2022/01/13 19:45:17 by alicekamlah      ###   ########.fr       */
+/*   Updated: 2022/01/14 13:59:22 by akamlah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 # define PHB_SEM_FORKS	"/phb_sem_forks"
 # define PHB_SEM_PRINT	"/phb_sem_print"
+# define PHB_SEM_START	"/phb_sem_start"
 
 /* ************************************************************************** */
 
@@ -66,21 +67,12 @@ typedef struct s_ph_vars
 int			ph_parse(t_ph_vars *phbx, int argc, char **argv);
 int			ft_atoi(const char *str);
 size_t		ft_strlen(const char *s);
-
-// cycle
+int			phb_init(t_ph_vars *phbx);
+int			phb_simulation(t_ph_vars *phbx);
+void		phb_free_and_exit(t_ph_vars *phbx, int philos, int exitstatus);
 int			ph_prec_msleep(long tv_tosleep_msec, int interval);
-void		phb_print_log(t_ph_vars *phbx, t_ph_philo *philo, int msgnr);
 void		phb_philos_life(t_ph_vars *phbx, t_ph_philo *philo);
 void		*phb_death(void *arg);
-
-// init
-int			phb_init(t_ph_vars *phbx);
-t_ph_philo	*phb_new_philo(t_ph_vars *phbx, int id);
-int			phb_simulation(t_ph_vars *phbx);
-int			phb_philo(t_ph_vars *phbx, int id);
-
-// todo:
-void		ph_free(t_ph_vars *phbx, int forks, int philos);
 
 /* ************************************************************************** */
 
