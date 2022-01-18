@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akamlah <akamlah@student.42.fr>            +#+  +:+       +#+         #
+#    By: alicekamlah <alicekamlah@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/12 21:52:44 by akamlah           #+#    #+#              #
-#    Updated: 2022/01/12 22:48:46 by akamlah          ###   ########.fr        #
+#    Updated: 2022/01/18 18:55:32 by alicekamlah      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@
 # **************************************************************************** #
 
 CC=gcc
-C_FLAGS=-Wall -Wextra -Werror -pthread
+C_FLAGS = -Wall -Wextra -Werror 
+CPP_FLAGS = -pthread
 
 # for testing and debugging purposes:
 # (run `make fsa' or `make fst' to apply)
@@ -33,6 +34,8 @@ NAME=philo
 SRC_DIR=./src/
 OBJ_DIR=./obj/
 
+HEADER=./header/philosophers.h
+
 SRC_LIST= \
 ph_main.c \
 ph_parse.c \
@@ -44,8 +47,6 @@ ft_strlen.c \
 
 SRC=$(addprefix $(SRC_DIR), $(SRC_LIST))
 OBJ=$(addprefix $(OBJ_DIR), $(patsubst %.c, %.o, $(SRC_LIST)))
-
-HEADER=./header/philosophers.h
 
 # **************************************************************************** #
 # COLORS
@@ -68,7 +69,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ) $(HEADER)
 
-	@$(CC) $(OBJ) $(C_FLAGS) $(LFLAGS) $(CPFLAGS) -o $@
+	@$(CC) $(CPP_FLAGS) $(OBJ) $(C_FLAGS) $(LFLAGS) $(CPFLAGS) -o $@
 	@echo "\n$(GREEN)Created executable: \`$(NAME)' $(NC)"
 
 $(OBJ_DIR):
@@ -76,7 +77,7 @@ $(OBJ_DIR):
 	@echo "$(NC)Creating object-files$(NC)\c"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@$(CC) $(C_FLAGS) $(CPFLAGS) $^ -c -o $@
+	@$(CC) $(CPP_FLAGS) $(C_FLAGS) $(CPFLAGS) $^ -c -o $@
 	@echo "$(NC).$(NC)\c"
 
 clean:
@@ -104,13 +105,13 @@ re:
 # =address
 fsa: fclean $(OBJ_DIR) $(OBJ) $(HEADER)
 
-	@$(CC) $(OBJ) $(C_FLAGS) $(FSA_FLAG) $(LFLAGS) $(CPFLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(CPP_FLAGS) $(C_FLAGS) $(FSA_FLAG) $(LFLAGS) $(CPFLAGS) -o $(NAME)
 	@echo "\nRecompiled with: $(PINK)$(FSA_FLAG)\n\
 	$(GREEN)Created executable: \`$(NAME)' $(NC)"
 # =thread
 fst: fclean $(OBJ_DIR) $(OBJ) $(HEADER)
 
-	@$(CC) $(OBJ) $(C_FLAGS) $(FST_FLAG) $(LFLAGS) $(CPFLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(CPP_FLAGS) $(C_FLAGS) $(FST_FLAG) $(LFLAGS) $(CPFLAGS) -o $(NAME)
 	@echo "\nRecompiled with: $(TURQOISE)$(FST_FLAG)\n\
 	$(GREEN)Created executable: \`$(NAME)' $(NC)"
 
